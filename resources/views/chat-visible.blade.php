@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,7 +27,8 @@
         </div>
       </div>
     </header>
-    <!-- header ends here -->
+    <!-- header ends here --> --}}
+    
 
     <div class="container py-md-5 container--narrow">
       <h2 class="text-center mb-4">The Latest From Those You Follow</h2>

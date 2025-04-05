@@ -14,26 +14,45 @@
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <header class="header-bar mb-3">
+    {{-- <header class="header-bar mb-3">
       <div class="container d-flex flex-column flex-md-row align-items-center p-3">
         <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">OurApp</a></h4>
-        <form action="/login" method="POST" class="mb-0 pt-2 pt-md-0">
-          @csrf
-          <div class="row align-items-center">
-            <div class="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-              <input name="name" class="form-control form-control-sm input-dark" type="text" placeholder="Username" autocomplete="off" />
-            </div>
-            <div class="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-              <input name="password" class="form-control form-control-sm input-dark" type="password" placeholder="Password" />
-            </div>
-            <div class="col-md-auto">
-              <button class="btn btn-primary btn-sm">Sign In</button>
-            </div>
-          </div>
-        </form>
+ <form action="/signup" method="POST" id="registration-form" enctype="multipart/form-data">
+  @csrf
+  <div class="form-group">
+    <label for="username-register" class="text-muted mb-1"><small>Username</small></label>
+    <input name="name" id="username-register" class="form-control" type="text" placeholder="Pick a username" autocomplete="off" />
+  </div>
+
+  <div class="form-group">
+    <label for="email-register" class="text-muted mb-1"><small>Email</small></label>
+    <input name="email" id="email-register" class="form-control" type="text" placeholder="you@example.com" autocomplete="off" />
+  </div>
+
+  <div class="form-group">
+    <label for="password-register" class="text-muted mb-1"><small>Password</small></label>
+    <input name="password" id="password-register" class="form-control" type="password" placeholder="Create a password" />
+  </div>
+
+  <div class="form-group">
+    <label for="password-register-confirm" class="text-muted mb-1"><small>Confirm Password</small></label>
+    <input name="password_confirmation" id="password-register-confirm" class="form-control" type="password" placeholder="Confirm password" />
+  </div>
+
+  <!-- Optional Profile Picture Upload -->
+  <div class="form-group">
+    <label for="profile-picture" class="text-muted mb-1"><small>Profile Picture (Optional)</small></label>
+    <input name="profile_picture" id="profile-picture" class="form-control-file" type="file" accept="image/*" />
+  </div>
+
+  <button type="submit" class="py-3 mt-4 btn btn-lg btn-success btn-block">Sign up for OurApp</button>
+</form>
+
       </div>
     </header>
-    <!-- header ends here -->
+    <!-- header ends here --> --}}
+
+  <x-partials.header />
 
     <div class="container py-md-5">
       <div class="row align-items-center">
