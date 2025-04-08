@@ -8,13 +8,28 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    //show the homepage
+
+//logout an authenticated user
+public function logout(){
+    auth()->logout();
+    return redirect('/');
+//     ->with('Success','You are now logged out');
+// return 'meat';
+  }
+
+
+ //show the homepage
     public function showCorrectHomepage(){
-        return view ('home');
-    }
+        if (auth()->check()){
+            return view('home-no-results');
+         }
+            else{
+               return view('home');
+            }     
+      }
 
 
-    //Login for a User
+//Login for a User
   public function login(Request $request){
    $incomingfields = $request-> validate ([
         'loginusername'=> 'required',
@@ -22,8 +37,9 @@ class UserController extends Controller
     ]);
     if (auth()->attempt(['username'=>$incomingfields['loginusername'], 'password'=>$incomingfields['loginpassword']])){
         $request->session()->regenerate();
-        return 'congrats';
-        // return redirect('/')->with('Success','You have successfully logged in');
+        // return 'congrats';
+        return redirect('/');
+        // ->with('Success','You have successfully logged in');
      }
         else {
            return 'sorry!!';
