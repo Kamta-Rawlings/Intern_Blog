@@ -13,6 +13,26 @@ class UserController extends Controller
         return view ('home');
     }
 
+
+    //Login for a User
+  public function login(Request $request){
+   $incomingfields = $request-> validate ([
+        'loginusername'=> 'required',
+        'loginpassword'=> 'required'
+    ]);
+    if (auth()->attempt(['username'=>$incomingfields['loginusername'], 'password'=>$incomingfields['loginpassword']])){
+        $request->session()->regenerate();
+        return 'congrats';
+        // return redirect('/')->with('Success','You have successfully logged in');
+     }
+        else {
+           return 'sorry!!';
+        //    return redirect('/')->with('failure','Invalid login');
+        }
+    }
+  
+
+
     //Register a new user
     public function  register(Request $request){
       $incomingfields = $request->validate ([
@@ -20,7 +40,8 @@ class UserController extends Controller
             'email' => ['required', 'email',Rule::unique('users', 'email')],
             'password' => ['required','min:4','confirmed']     
         ]);
-         User::create ($incomingfields);
+         $user = User::create ($incomingfields);
+         auth()->login($user);
          return 'me';
     }
 }

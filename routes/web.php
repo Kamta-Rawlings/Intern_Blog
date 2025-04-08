@@ -14,5 +14,6 @@ use App\Http\Controllers\userController;
 //User Routes 
 Route::get('/', [UserController::class, 'showCorrectHomepage']);
 Route::post('/register', [UserController::class, 'register']);
-Route::post('/signup', [userController::class, 'signup'])->name('signup');
-Route::post('/login', [userController::class, 'login'])->name('login');
+Route::post('/login', [UserController::class, 'login']);
+
+// Route::post('/signup', [userController::class, 'signup'])->name('signup');
