@@ -2,20 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\ChatController;
 
-// Route::get('/', function () {
-//     return view('home');
-// })->name("base");
-
-// Route::get('/register', function () {
-//     return view('register');
-// })->name("register");
 
 //User Routes 
 Route::get('/', [UserController::class, 'showCorrectHomepage']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
-// Route::post('/logout', [UserController::class, 'logout']);
 Route::Post('/logout', [UserController::class, 'logout']);
+Route::get('/chat', [ChatController::class, 'showChatList'])->middleware('auth');
 
-// Route::post('/signup', [userController::class, 'signup'])->name('signup');
+// Route to start a conversation with a user
+Route::get('/chat/start/{user}', [ChatController::class, 'startConversation'])->name('chat.start');
+
+// Route to send a message in a conversation
+Route::post('/chat/{conversation}/send', [ChatController::class, 'sendMessage'])->name('chat.send');
+
+
+
+
