@@ -58,6 +58,7 @@ public function logout(){
         ]);
          $user = User::create ($incomingfields);
          auth()->login($user);
-         return 'me';
+         return redirect('/');
+        //  return 'me';
     }
 }
