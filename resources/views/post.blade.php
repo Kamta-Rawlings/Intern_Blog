@@ -18,7 +18,8 @@
       </p>
 
       <div class="body-content">
-        {!! nl2br(e($posts->content)) !!}
+        {{-- {!! nl2br(e($posts->content)) !!} --}}
+        <p>{{ $posts->content }}</p>
       </div>
     </div>
 </x-layout>
