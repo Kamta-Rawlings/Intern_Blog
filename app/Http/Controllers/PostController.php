@@ -24,6 +24,8 @@ class PostController extends Controller
         ]);
     }
 
+
+
     // Store a new post
     // This method handles the form submission for creating a new post
     public function store(Request $request)
@@ -42,19 +44,20 @@ class PostController extends Controller
        $post= Post::create($incomingfields);
 
         // Redirect the user to the create posts page with a success message
-        return redirect('/post');
+        // return redirect('/post');
+        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
-    // Show a specific post
-    public function show($id): view
-    {
-        // Debugging: Check if the ID is being passed correctly
-        dd("Show method hit with ID: $id");
-        // Find the post by its ID
-        $post = Post::findOrFail($id);
 
-        // Return the view with the post data
-        return view('post', ['post' => $post]);
+
+
+    // Show a specific post
+    public function show(Post $post): view
+    {
+        // Return the view for displaying a specific post
+        return view('post', [
+            'post' => $post,
+        ]);
     }
 }
  

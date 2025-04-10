@@ -1,10 +1,10 @@
 <x-layout>
     <div class="container py-md-5 container--narrow">
       <div class="d-flex justify-content-between">
-        <h2>{{ $posts->title }}</h2>
+        <h2>{{ $post->title }}</h2>
         <span class="pt-2">
           <a href="#" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-          <form class="delete-post-form d-inline" action="#" method="POST">
+          <form class="delete-post-form d-inline" action="/post" method="POST">
             @csrf
             @method('DELETE')
             <button class="delete-post-button text-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
@@ -14,12 +14,12 @@
 
       <p class="text-muted small mb-4">
         <a href="#"><img class="avatar-tiny" src="https://gravatar.com/avatar/f64fc44c03a8a7eb1d52502950879659?s=128" /></a>
-        Posted by <a>{{auth()->user()->username}}</a> on {{ $posts->created_at ? $posts->created_at->format('n/j/Y'): 'Unknown Date' }}
+        Posted by <a>{{auth()->user()->username}}</a> on {{ $post->created_at ? $post->created_at->format('n/j/Y'): 'Unknown Date' }}
       </p>
 
       <div class="body-content">
         {{-- {!! nl2br(e($posts->content)) !!} --}}
-        <p>{{ $posts->content }}</p>
+        <p>{{ $post->content }}</p>
       </div>
     </div>
 </x-layout>

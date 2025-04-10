@@ -1,7 +1,7 @@
 <x-layout>
 
   <div class="container py-md-5 container--narrow">
-    <form action="/store" method="POST">
+    <form action="/posts" method="POST">
     @csrf
 
       <div class="form-group">
