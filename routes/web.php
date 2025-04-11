@@ -20,10 +20,10 @@ Route::get('/chat', [ChatController::class, 'showChatList'])->middleware('auth')
 Route::get('/createposts', [PostController::class, 'create']);
 // Route to store a new post
 Route::post('/posts', [PostController::class, 'store']);
-// // Route to show a specific post
+// Route to show a specific post
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-
-
+// Route to show all posts created by the authenticated user
+Route::get('/posts', [PostController::class, 'posts'])->name('post');
 
 
 
@@ -32,5 +32,4 @@ Route::get('/chat/start/{user}', [ChatController::class, 'startConversation'])->
 
 // Route to send a message in a conversation
 Route::post('/chat/{conversation}/send', [ChatController::class, 'sendMessage'])->name('chat.send');
-
 
