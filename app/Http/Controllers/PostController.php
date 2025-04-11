@@ -7,6 +7,7 @@ use illuminate\contracts\view\view;
 use App\Models\Post;
 
 
+
 class PostController extends Controller
 {
     // Show the form to create a new post
@@ -15,15 +16,14 @@ class PostController extends Controller
         return view('createposts');
     }
 
-    public function posts(Post $posts): view
+    public function posts(): view
     {
-        
+        $posts = Post::where('user_id', auth()->id())->with('user')->get();
 
         return view('post', [
             'posts' => $posts
         ]);
     }
-
 
 
     // Store a new post
@@ -48,16 +48,15 @@ class PostController extends Controller
         return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
-
-
-
-    // Show a specific post
-    public function show(Post $post): view
+    // Show all posts created by the authenticated user
+    public function show(): view
     {
+        // Retrieve all posts created by the authenticated user
+    $posts = Post::where('user_id', auth()->id())->get();
         // Return the view for displaying a specific post
         return view('post', [
-            'post' => $post,
+            'post' => $posts,
         ]);
+
     }
 }
- 
