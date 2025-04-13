@@ -8,14 +8,18 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    //show profile page
+    public function showProfile(){
+        return view('profile-posts');
+    }
 
 //logout an authenticated user
-public function logout(){
-    auth()->logout();
-    return redirect('/');
-//     ->with('Success','You are now logged out');
-// return 'meat';
-  }
+   public function logout(){
+       auth()->logout();
+       return redirect('/');
+   //     ->with('Success','You are now logged out');
+   // return 'meat';
+     }
 
 
  //show the homepage
@@ -41,9 +45,8 @@ public function logout(){
         return redirect('/');
         // ->with('Success','You have successfully logged in');
      }
-        else {
-           return 'sorry!!';
-        //    return redirect('/')->with('failure','Invalid login');
+        else {         
+            return redirect('/')->with('failure','Invalid login');
         }
     }
   
